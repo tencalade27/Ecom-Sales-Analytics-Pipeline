@@ -1,0 +1,36 @@
+name: 'ecommerce_analytics'
+version: '1.0'
+config-version: 2
+
+profile: 'ecommerce'
+
+models:
+  ecommerce_analytics:
+    staging:
+      +schema: staging
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
+
+tests:
+  +store_failures: true
+
+seed:
+  +quote_columns: false
+
+vars:
+  dbt_target_schema: analytics
+
+targets:
+  dev:
+    type: snowflake
+    account: "redacted"
+    user: "redacted"
+    password: "redacted"
+    role: "redacted"
+    database: "my_database"
+    warehouse: "e3_ecommerce"
+    schema: "analytics"
+    threads: 4
+    client_session_keep_alive: False
