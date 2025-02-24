@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: "Aggregated sales transactions with total revenue calculations."
+    columns:
+      - name: order_id
+        description: "Primary key for each order."
+        tests:
+          - unique
+          - not_null
