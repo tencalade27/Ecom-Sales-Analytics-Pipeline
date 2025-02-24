@@ -1,6 +1,4 @@
 -- Ensures valid data types
--- Filters out bad records
--- Converts timestamps into date format
 
 SELECT 
     order_id, 
@@ -8,6 +6,6 @@ SELECT
     product_id, 
     quantity, 
     CAST(price AS DECIMAL(10,2)) AS price, 
-    DATE(order_date) AS order_date
+    DATE(order_date) AS order_date -- Converts timestamps into date format
 FROM {{ source('raw', 'orders_raw') }}
-WHERE order_id IS NOT NULL;
+WHERE order_id IS NOT NULL; -- Filters out bad records
