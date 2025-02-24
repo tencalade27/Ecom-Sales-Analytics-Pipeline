@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: "Aggregated sales transactions with total revenue calculations."
+    columns:
+      - name: customer_id
+        description: "Foreign key referencing dim_customers."
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: product_id
+        description: "Foreign key referencing dim_products."
+        tests:
+          - relationships:
+              to: ref('dim_products')
+              field: product_id
